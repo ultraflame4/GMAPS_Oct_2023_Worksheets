@@ -26,7 +26,7 @@ public class VectorExercises : MonoBehaviour
         if (Q2a) Question2a();
         if (Q2b) Question2b(200);
         if (Q2d) Question2d();
-        if (Q2e) Question2e(20);
+        if (Q2e) Question2e(200);
         if (Q3a) Question3a();
         if (Q3b) Question3b();
         if (Q3c) Question3c();
@@ -84,18 +84,17 @@ public class VectorExercises : MonoBehaviour
     {
         for (int i = 0; i < n; i++)
         {
-            startPt = new Vector2(
+            var direction = new Vector3(
                 Random.Range(-maxX, maxX),
-                Random.Range(-maxY, maxY));
+                Random.Range(-maxY, maxY),
+                Random.Range(-maxY, maxY)
+                );
 
-            // Your code here
-            // ...
-
-            //DebugExtension.DebugArrow(
-            //    new Vector3(0, 0, 0),
-            //    // Your code here,
-            //    Color.white,
-            //    60f);
+            DebugExtension.DebugArrow(
+                Vector3.zero,
+                direction,
+                Color.white,
+                60f);
         }
     }
 
