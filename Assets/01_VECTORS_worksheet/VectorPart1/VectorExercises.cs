@@ -71,7 +71,14 @@ public class VectorExercises : MonoBehaviour
         }
     }
 
-    void Question2d() { }
+    void Question2d()
+    {
+        DebugExtension.DebugArrow(
+            Vector3.zero,
+            new Vector3(5, 5, 0),
+            Color.red,
+            604);
+    }
 
     void Question2e(int n)
     {
