@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class VectorExercises : MonoBehaviour
 {
-    [SerializeField] LineFactory lineFactory;
-    [SerializeField] bool Q2a, Q2b, Q2d, Q2e;
-    [SerializeField] bool Q3a, Q3b, Q3c, projection;
+    [SerializeField]
+    LineFactory lineFactory;
+
+    [SerializeField]
+    bool Q2a, Q2b, Q2d, Q2e;
+
+    [SerializeField]
+    bool Q3a, Q3b, Q3c, projection;
 
     private Line drawnLine;
 
@@ -34,32 +39,29 @@ public class VectorExercises : MonoBehaviour
             Projection();
     }
 
-    public void CalculateGameDimensions()
-    {
-
-    }
+    public void CalculateGameDimensions() { }
 
     void Question2a()
     {
-
+        startPt = Vector2.zero; // Position of starting point. Vector2.zero is equivalent to new Vector2(0,0)
+        endPt = new Vector2(2, 3); // Position of the ending point of the line yes
+        // Use line factory
+        drawnLine = lineFactory.GetLine(startPt, endPt , 0.02f,Color. black);
+        drawnLine. EnableDrawing (true) ;
+        Vector2 vec2 = endPt - startPt;
+        Debug.Log($"Magnitude = {vec2.magnitude}");
     }
 
-    void Question2b(int n)
-    {
+    void Question2b(int n) { }
 
-    }
-
-    void Question2d()
-    {
-
-    }
+    void Question2d() { }
 
     void Question2e(int n)
     {
         for (int i = 0; i < n; i++)
         {
             startPt = new Vector2(
-                Random.Range(-maxX, maxX), 
+                Random.Range(-maxX, maxX),
                 Random.Range(-maxY, maxY));
 
             // Your code here
@@ -70,7 +72,7 @@ public class VectorExercises : MonoBehaviour
             //    // Your code here,
             //    Color.white,
             //    60f);
-        }  
+        }
     }
 
     public void Question3a()
@@ -99,10 +101,7 @@ public class VectorExercises : MonoBehaviour
         // Your code here
     }
 
-    public void Question3c()
-    {
-
-    }
+    public void Question3c() { }
 
     public void Projection()
     {
