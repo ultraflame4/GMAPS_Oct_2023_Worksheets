@@ -45,10 +45,10 @@ public class VectorExercises : MonoBehaviour
     {
         startPt = Vector2.zero; // Position of starting point. Vector2.zero is equivalent to new Vector2(0,0)
         endPt = new Vector2(2, 3); // Position of the ending point of the line yes
-        // Use line factory
-        drawnLine = lineFactory.GetLine(startPt, endPt , 0.02f,Color. black);
-        drawnLine. EnableDrawing (true) ;
-        Vector2 vec2 = endPt - startPt;
+        // Use line factory to get line to draw
+        drawnLine = lineFactory.GetLine(startPt, endPt, 0.02f, Color.black);
+        drawnLine.EnableDrawing(true); // Enable drawing yayy
+        Vector2 vec2 = endPt - startPt; // Get direction vector from start to end point
         Debug.Log($"Magnitude = {vec2.magnitude}");
     }
 
