@@ -20,26 +20,28 @@ public class VectorExercises : MonoBehaviour
     private float minX, minY, maxX, maxY;
 
     private void Start()
-    {
-        if (Q2a)
-            Question2a();
-        if (Q2b)
-            Question2b(20);
-        if (Q2d)
-            Question2d();
-        if (Q2e)
-            Question2e(20);
-        if (Q3a)
-            Question3a();
-        if (Q3b)
-            Question3b();
-        if (Q3c)
-            Question3c();
-        if (projection)
-            Projection();
+    {        
+        CalculateGameDimensions();
+        
+        if (Q2a) Question2a();
+        if (Q2b) Question2b(200);
+        if (Q2d) Question2d();
+        if (Q2e) Question2e(20);
+        if (Q3a) Question3a();
+        if (Q3b) Question3b();
+        if (Q3c) Question3c();
+        if (projection) Projection();
     }
 
-    public void CalculateGameDimensions() { }
+    public void CalculateGameDimensions()
+    {
+        GameHeight = Camera.main.orthographicSize * 2;
+        GameWidth = Camera.main.aspect * GameHeight;
+        maxX = GameWidth / 2;
+        maxY = GameHeight / 2;
+        minX = -maxX;
+        minY = -maxY;
+    }
 
     void Question2a()
     {
@@ -54,9 +56,6 @@ public class VectorExercises : MonoBehaviour
 
     void Question2b(int n)
     {
-        minX = minY = -5;
-        maxX = maxY = 5;
-
         for (int i = 0; i < n; i++)
         {
             Vector2 startPt = new Vector2(
@@ -69,7 +68,6 @@ public class VectorExercises : MonoBehaviour
             );
             drawnLine = lineFactory.GetLine(startPt, endPt, 0.02f, Color.black);
             drawnLine.EnableDrawing(true);
-
         }
     }
 
