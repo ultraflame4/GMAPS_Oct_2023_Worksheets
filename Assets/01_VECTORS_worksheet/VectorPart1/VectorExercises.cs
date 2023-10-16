@@ -52,7 +52,26 @@ public class VectorExercises : MonoBehaviour
         Debug.Log($"Magnitude = {vec2.magnitude}");
     }
 
-    void Question2b(int n) { }
+    void Question2b(int n)
+    {
+        minX = minY = -5;
+        maxX = maxY = 5;
+
+        for (int i = 0; i < n; i++)
+        {
+            Vector2 startPt = new Vector2(
+                Random.Range(minX, maxX),
+                Random.Range(minY, maxY)
+            );
+            Vector2 endPt = new Vector2(
+                Random.Range(minX, maxX),
+                Random.Range(minY, maxY)
+            );
+            drawnLine = lineFactory.GetLine(startPt, endPt, 0.02f, Color.black);
+            drawnLine.EnableDrawing(true);
+
+        }
+    }
 
     void Question2d() { }
 
