@@ -30,15 +30,16 @@ public class HVector2D
         h = 1.0f;
     }
 
-    // public static HVector2D operator +( /*???*/)
-    // {
-
-    // }
-
-    // public static HVector2D operator -(/*???*/)
-    // {
-
-    // }
+    public static HVector2D operator +(HVector2D a, HVector2D b)
+    {
+        return new HVector2D(a.x + b.x, a.y + b.y);
+    }
+    
+    public static HVector2D operator -(HVector2D a, HVector2D b)
+    {
+        return new HVector2D(a.x - b.x, a.y - b.y);
+    }
+    
 
     // public static HVector2D operator *(/*???*/)
     // {
@@ -50,10 +51,12 @@ public class HVector2D
 
     // }
 
-    // public float Magnitude()
-    // {
-
-    // }
+    public float Magnitude()
+    {
+        // c^2 = a^2 + b^2
+        // c = sqrt(a^2 + b^2)
+        return Mathf.Sqrt(x*x + y*y);
+    }
 
     // public void Normalize()
     // {
@@ -77,12 +80,12 @@ public class HVector2D
 
     public Vector2 ToUnityVector2()
     {
-        return Vector2.zero; // change this
+        return (Vector2)ToUnityVector3(); // change this
     }
 
     public Vector3 ToUnityVector3()
     {
-        return Vector2.zero; // change this
+        return new Vector3(x,y,0); // change this
     }
 
     // public void Print()
