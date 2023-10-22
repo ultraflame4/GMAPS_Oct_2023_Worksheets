@@ -63,10 +63,14 @@ public class HVector2D
         return Mathf.Sqrt(x*x + y*y);
     }
 
-    // public void Normalize()
-    // {
-
-    // }
+    public void Normalize()
+    {
+        // To normalise a vector, we need to scale it down to a magnitude of 1
+        // To do that jst divide the vector by its magnitude, because 5/5=1, 10/10=1, etc
+        float m = Magnitude();
+        x /= m;
+        y /= m;
+    }
 
     // public float DotProduct(/*???*/)
     // {
