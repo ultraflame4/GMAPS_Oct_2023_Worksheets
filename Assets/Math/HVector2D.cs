@@ -97,6 +97,14 @@ public class HVector2D
         return new Vector3(x, y, 0); // change this
     }
 
+    public void CopyTo(HVector2D v)
+    {
+        v.x = x;
+        v.y = y;
+        v.h = h;
+    }
+    
+
     // public void Print()
     // {
 
