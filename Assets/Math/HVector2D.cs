@@ -30,29 +30,34 @@ public class HVector2D
         h = 1.0f;
     }
 
+    // Overload the + operator to support vector addition
     public static HVector2D operator +(HVector2D a, HVector2D b)
     {
+        // Return new vector with the sum of the two vectors
         return new HVector2D(a.x + b.x, a.y + b.y);
     }
     
+    // Like the + operator, but for subtraction
     public static HVector2D operator -(HVector2D a, HVector2D b)
     {
         return new HVector2D(a.x - b.x, a.y - b.y);
     }
     
+    // Vector scalar multiplication (vector * scalar) aka scaling
+    public static HVector2D operator *(HVector2D a, float scalar)
+    {
+        return new HVector2D(a.x * scalar, a.y * scalar);
+    }
 
-    // public static HVector2D operator *(/*???*/)
-    // {
-
-    // }
-
-    // public static HVector2D operator /(/*???*/)
-    // {
-
-    // }
+    // Scalar division (vector / scalar) aka (vector * 1/scalar)
+    public static HVector2D operator /(HVector2D a, float scalar)
+    {
+        return a * (1 / scalar);
+    }
 
     public float Magnitude()
     {
+        // Pythagoras' theorem
         // c^2 = a^2 + b^2
         // c = sqrt(a^2 + b^2)
         return Mathf.Sqrt(x*x + y*y);

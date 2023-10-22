@@ -100,32 +100,29 @@ public class VectorExercises : MonoBehaviour
 
     public void Question3a()
     {
+        // Create dah vectors
         HVector2D a = new HVector2D(3, 5);
         HVector2D b = new HVector2D(-4, 2);
         HVector2D c = a - b;
 
+        // Draw dah vectors
         DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
         DebugExtension.DebugArrow(Vector3.zero, b.ToUnityVector3(), Color.green, 60f);
         DebugExtension.DebugArrow(a.ToUnityVector3(), -b.ToUnityVector3(), Color.green, 60f);
         DebugExtension.DebugArrow(Vector3.zero, c.ToUnityVector3(), Color.white, 60f);
-
-        // Your code here
-        // ...
-
-        // Your code here
-
+        
         Debug.Log("Magnitude of a = " + a.Magnitude().ToString("F2")); // Your code here.ToString("F2"));
-        // Your code here
-        // ...
     }
 
     public void Question3b()
     {
-        // Your code here
-        // ...
-
-        //DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
-        // Your code here
+        // More vectors yay
+        HVector2D a = new HVector2D(3, 5);
+        HVector2D b = a / 2;
+        
+        DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
+        DebugExtension.DebugArrow(Vector3.right, b.ToUnityVector3(), Color.green, 60f);
+        
     }
 
     public void Question3c() { }
