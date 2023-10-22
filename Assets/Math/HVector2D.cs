@@ -36,31 +36,22 @@ public class HVector2D
         // Return new vector with the sum of the two vectors
         return new HVector2D(a.x + b.x, a.y + b.y);
     }
-    
+
     // Like the + operator, but for subtraction
-    public static HVector2D operator -(HVector2D a, HVector2D b)
-    {
-        return new HVector2D(a.x - b.x, a.y - b.y);
-    }
-    
+    public static HVector2D operator -(HVector2D a, HVector2D b) { return new HVector2D(a.x - b.x, a.y - b.y); }
+
     // Vector scalar multiplication (vector * scalar) aka scaling
-    public static HVector2D operator *(HVector2D a, float scalar)
-    {
-        return new HVector2D(a.x * scalar, a.y * scalar);
-    }
+    public static HVector2D operator *(HVector2D a, float scalar) { return new HVector2D(a.x * scalar, a.y * scalar); }
 
     // Scalar division (vector / scalar) aka (vector * 1/scalar)
-    public static HVector2D operator /(HVector2D a, float scalar)
-    {
-        return a * (1 / scalar);
-    }
+    public static HVector2D operator /(HVector2D a, float scalar) { return a * (1 / scalar); }
 
     public float Magnitude()
     {
         // Pythagoras' theorem
         // c^2 = a^2 + b^2
         // c = sqrt(a^2 + b^2)
-        return Mathf.Sqrt(x*x + y*y);
+        return Mathf.Sqrt(x * x + y * y);
     }
 
     public void Normalize()
@@ -72,15 +63,24 @@ public class HVector2D
         y /= m;
     }
 
-    // public float DotProduct(/*???*/)
-    // {
+    public float DotProduct(HVector2D b)
+    {
+        return (x * b.x + y * b.y);
+    }
 
-    // }
-
-    // public HVector2D Projection(/*???*/)
-    // {
-
-    // }
+    /// <summary>
+    /// Projects this vector onto vector b
+    /// </summary>
+    /// <param name="b"></param>
+    /// <returns></returns>
+    public HVector2D Projection(HVector2D b)
+    {
+        // Modified from https://stackoverflow.com/a/26959423
+        float num1 = b.DotProduct(this);
+        float num2 = b.DotProduct(b);
+        var val = (num1 / num2);
+        return b * val;
+    }
 
     // public float FindAngle(/*???*/)
     // {
@@ -94,7 +94,7 @@ public class HVector2D
 
     public Vector3 ToUnityVector3()
     {
-        return new Vector3(x,y,0); // change this
+        return new Vector3(x, y, 0); // change this
     }
 
     // public void Print()

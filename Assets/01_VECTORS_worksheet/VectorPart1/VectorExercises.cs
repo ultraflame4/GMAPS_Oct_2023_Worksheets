@@ -112,6 +112,8 @@ public class VectorExercises : MonoBehaviour
         DebugExtension.DebugArrow(Vector3.zero, c.ToUnityVector3(), Color.white, 60f);
         
         Debug.Log("Magnitude of a = " + a.Magnitude().ToString("F2")); // Your code here.ToString("F2"));
+        Debug.Log("Magnitude of b = " + b.Magnitude().ToString("F2")); // Your code here.ToString("F2"));
+        Debug.Log("Magnitude of c = " + c.Magnitude().ToString("F2")); // Your code here.ToString("F2"));
     }
 
     public void Question3b()
@@ -138,17 +140,17 @@ public class VectorExercises : MonoBehaviour
 
     public void Projection()
     {
-        HVector2D a = new HVector2D(0, 0);
+
         HVector2D b = new HVector2D(6, 0);
         HVector2D c = new HVector2D(2, 2);
 
-        //HVector2D v1 = b - a;
-        // Your code here
+        // HVector2D v1 = b - a;
 
-        //HVector2D proj = // Your code here
-
-        //DebugExtension.DebugArrow(a.ToUnityVector3(), b.ToUnityVector3(), Color.red, 60f);
-        //DebugExtension.DebugArrow(a.ToUnityVector3(), c.ToUnityVector3(), Color.yellow, 60f);
-        //DebugExtension.DebugArrow(a.ToUnityVector3(), proj.ToUnityVector3(), Color.white, 60f);
+        HVector2D proj = c.Projection(b);
+        Debug.Log("Magnitude of proj = " + proj.Magnitude().ToString("F2")); // Your code here.ToString("F2"));
+        DebugExtension.DebugArrow(Vector3.zero, b.ToUnityVector3(), Color.red, 60f);
+        DebugExtension.DebugArrow(Vector3.zero, c.ToUnityVector3(), Color.yellow, 60f);
+        // DebugExtension.DebugArrow(Vector3.zero, v1.ToUnityVector3(), Color.yellow, 60f);
+        DebugExtension.DebugArrow(Vector3.zero, proj.ToUnityVector3(), Color.white, 60f);
     }
 }
