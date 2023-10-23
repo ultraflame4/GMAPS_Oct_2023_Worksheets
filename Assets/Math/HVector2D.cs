@@ -75,20 +75,20 @@ public class        HVector2D
     /// <returns></returns>
     public HVector2D Projection(HVector2D b)
     {
-        // Modified from https://stackoverflow.com/a/26959423
-        float num1 = b.DotProduct(this);
-        float num2 = b.DotProduct(b);
-        var val = (num1 / num2);
+        // Get dot product of this vector and b
+        float dot_product = b.DotProduct(this);
+        // Because the dot product is a*b we need to divide by b*b to "normalise" the value / get percentage / get proportion
+        float total_squared = b.DotProduct(b);
+        var val = (dot_product / total_squared);
         return b * val;
     }
 
     public float FindAngle(HVector2D other)
     {
-        
         float d1 = DotProduct(other);
-        float angle = Mathf.Acos(d1 / (Magnitude() * other.Magnitude()));
-        float d2 = other.x * y - x * other.y; // Strange dot product used for finding the sign of the angle. Left = -1, Right = 1
-        float signed = angle * Mathf.Sign(d2);
+        float angle = Mathf.Acos(d1 / (Magnitude() * other.Magnitude())); // Use the other dot product formula to find the angle between the vectors
+        float left = other.x * y - x * other.y; // Weird equation i found only to check if vector is left or right of the other one. Left = -1, Right = 1
+        float signed = angle * Mathf.Sign(left); // Add sign to angle
         return signed;
     }
 
