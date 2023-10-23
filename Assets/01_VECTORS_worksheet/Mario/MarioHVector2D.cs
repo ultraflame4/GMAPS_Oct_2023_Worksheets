@@ -28,8 +28,10 @@ public class MarioHVector2D : MonoBehaviour
         rb.AddForce((moveDir * force * Input.GetAxisRaw("Vertical")).ToUnityVector3());
         rb.AddForce((gravityDir * gravityStrength).ToUnityVector3());
 
-        float angle = Vector3.SignedAngle(Vector3.down, gravityNorm.ToUnityVector3(), Vector3.forward);
-        rb.MoveRotation(Quaternion.Euler(0, 0, angle));
+        HVector2D down = new HVector2D(0, -1);
+
+        float angle = gravityNorm.FindAngle(down);
+        rb.MoveRotation(Quaternion.Euler(0, 0, Mathf.Rad2Deg*angle));
 
         DebugExtension.DebugArrow(transform.position, gravityDir.ToUnityVector3(), Color.red);
         DebugExtension.DebugArrow(transform.position, moveDir.ToUnityVector3(), Color.blue);

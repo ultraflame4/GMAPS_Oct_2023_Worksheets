@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 //[Serializable]
-public class HVector2D
+public class        HVector2D
 {
     public float x, y;
     public float h;
@@ -82,10 +82,15 @@ public class HVector2D
         return b * val;
     }
 
-    // public float FindAngle(/*???*/)
-    // {
-
-    // }
+    public float FindAngle(HVector2D other)
+    {
+        
+        float d1 = DotProduct(other);
+        float angle = Mathf.Acos(d1 / (Magnitude() * other.Magnitude()));
+        float d2 = other.x * y - x * other.y; // Strange dot product used for finding the sign of the angle. Left = -1, Right = 1
+        float signed = angle * Mathf.Sign(d2);
+        return signed;
+    }
 
     public Vector2 ToUnityVector2()
     {
