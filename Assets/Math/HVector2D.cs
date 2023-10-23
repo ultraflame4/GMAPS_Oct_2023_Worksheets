@@ -30,45 +30,57 @@ public class HVector2D
         h = 1.0f;
     }
 
-    // public static HVector2D operator +( /*???*/)
-    // {
+    // Overload the + operator to support vector addition
+    public static HVector2D operator +(HVector2D a, HVector2D b)
+    {
+        // Return new vector with the sum of the two vectors
+        return new HVector2D(a.x + b.x, a.y + b.y);
+    }
 
-    // }
+    // Like the + operator, but for subtraction
+    public static HVector2D operator -(HVector2D a, HVector2D b) { return new HVector2D(a.x - b.x, a.y - b.y); }
 
-    // public static HVector2D operator -(/*???*/)
-    // {
+    // Vector scalar multiplication (vector * scalar) aka scaling
+    public static HVector2D operator *(HVector2D a, float scalar) { return new HVector2D(a.x * scalar, a.y * scalar); }
 
-    // }
+    // Scalar division (vector / scalar) aka (vector * 1/scalar)
+    public static HVector2D operator /(HVector2D a, float scalar) { return a * (1 / scalar); }
 
-    // public static HVector2D operator *(/*???*/)
-    // {
+    public float Magnitude()
+    {
+        // Pythagoras' theorem
+        // c^2 = a^2 + b^2
+        // c = sqrt(a^2 + b^2)
+        return Mathf.Sqrt(x * x + y * y);
+    }
 
-    // }
+    public void Normalize()
+    {
+        // To normalise a vector, we need to scale it down to a magnitude of 1
+        // To do that jst divide the vector by its magnitude, because 5/5=1, 10/10=1, etc
+        float m = Magnitude();
+        x /= m;
+        y /= m;
+    }
 
-    // public static HVector2D operator /(/*???*/)
-    // {
+    public float DotProduct(HVector2D b)
+    {
+        return (x * b.x + y * b.y);
+    }
 
-    // }
-
-    // public float Magnitude()
-    // {
-
-    // }
-
-    // public void Normalize()
-    // {
-
-    // }
-
-    // public float DotProduct(/*???*/)
-    // {
-
-    // }
-
-    // public HVector2D Projection(/*???*/)
-    // {
-
-    // }
+    /// <summary>
+    /// Projects this vector onto vector b
+    /// </summary>
+    /// <param name="b"></param>
+    /// <returns></returns>
+    public HVector2D Projection(HVector2D b)
+    {
+        // Modified from https://stackoverflow.com/a/26959423
+        float num1 = b.DotProduct(this);
+        float num2 = b.DotProduct(b);
+        var val = (num1 / num2);
+        return b * val;
+    }
 
     // public float FindAngle(/*???*/)
     // {
@@ -77,13 +89,21 @@ public class HVector2D
 
     public Vector2 ToUnityVector2()
     {
-        return Vector2.zero; // change this
+        return (Vector2)ToUnityVector3(); // change this
     }
 
     public Vector3 ToUnityVector3()
     {
-        return Vector2.zero; // change this
+        return new Vector3(x, y, 0); // change this
     }
+
+    public void CopyTo(HVector2D v)
+    {
+        v.x = x;
+        v.y = y;
+        v.h = h;
+    }
+    
 
     // public void Print()
     // {

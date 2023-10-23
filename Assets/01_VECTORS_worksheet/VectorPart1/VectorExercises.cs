@@ -20,31 +20,33 @@ public class VectorExercises : MonoBehaviour
     private float minX, minY, maxX, maxY;
 
     private void Start()
-    {
-        if (Q2a)
-            Question2a();
-        if (Q2b)
-            Question2b(20);
-        if (Q2d)
-            Question2d();
-        if (Q2e)
-            Question2e(20);
-        if (Q3a)
-            Question3a();
-        if (Q3b)
-            Question3b();
-        if (Q3c)
-            Question3c();
-        if (projection)
-            Projection();
+    {        
+        CalculateGameDimensions();
+        
+        if (Q2a) Question2a();
+        if (Q2b) Question2b(200);
+        if (Q2d) Question2d();
+        if (Q2e) Question2e(200);
+        if (Q3a) Question3a();
+        if (Q3b) Question3b();
+        if (Q3c) Question3c();
+        if (projection) Projection();
     }
 
-    public void CalculateGameDimensions() { }
+    public void CalculateGameDimensions()
+    {
+        GameHeight = Camera.main.orthographicSize * 2;
+        GameWidth = Camera.main.aspect * GameHeight;
+        maxX = GameWidth / 2;
+        maxY = GameHeight / 2;
+        minX = -maxX;
+        minY = -maxY;
+    }
 
     void Question2a()
     {
-        startPt = Vector2.zero; // Position of starting point. Vector2.zero is equivalent to new Vector2(0,0)
-        endPt = new Vector2(2, 3); // Position of the ending point of the line yes
+        startPt = new Vector2(3,-1); // Position of starting point. Vector2.zero is equivalent to new Vector2(0,0)
+        endPt = new Vector2(1, 2); // Position of the ending point of the line yes
         // Use line factory to get line to draw
         drawnLine = lineFactory.GetLine(startPt, endPt, 0.02f, Color.black);
         drawnLine.EnableDrawing(true); // Enable drawing yayy
@@ -54,9 +56,6 @@ public class VectorExercises : MonoBehaviour
 
     void Question2b(int n)
     {
-        minX = minY = -5;
-        maxX = maxY = 5;
-
         for (int i = 0; i < n; i++)
         {
             Vector2 startPt = new Vector2(
@@ -69,72 +68,89 @@ public class VectorExercises : MonoBehaviour
             );
             drawnLine = lineFactory.GetLine(startPt, endPt, 0.02f, Color.black);
             drawnLine.EnableDrawing(true);
-
         }
     }
 
-    void Question2d() { }
+    void Question2d()
+    {
+        DebugExtension.DebugArrow(
+            Vector3.zero,
+            new Vector3(5, 5, 0),
+            Color.red,
+            604);
+    }
 
     void Question2e(int n)
     {
         for (int i = 0; i < n; i++)
         {
-            startPt = new Vector2(
+            var direction = new Vector3(
                 Random.Range(-maxX, maxX),
-                Random.Range(-maxY, maxY));
+                Random.Range(-maxY, maxY),
+                Random.Range(-maxY, maxY)
+                );
 
-            // Your code here
-            // ...
-
-            //DebugExtension.DebugArrow(
-            //    new Vector3(0, 0, 0),
-            //    // Your code here,
-            //    Color.white,
-            //    60f);
+            DebugExtension.DebugArrow(
+                Vector3.zero,
+                direction,
+                Color.white,
+                60f);
         }
     }
 
     public void Question3a()
     {
+        // Create dah vectors
         HVector2D a = new HVector2D(3, 5);
-        //HVector2D b = // Your code here;
-        //HVector2D c = // Your code here;
+        HVector2D b = new HVector2D(-4, 2);
+        HVector2D c = a - b;
 
+        // Draw dah vectors
         DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
-        // Your code here
-        // ...
-
-        // Your code here
-
-        //Debug.Log("Magnitude of a = " + // Your code here.ToString("F2"));
-        // Your code here
-        // ...
+        DebugExtension.DebugArrow(Vector3.zero, b.ToUnityVector3(), Color.green, 60f);
+        DebugExtension.DebugArrow(a.ToUnityVector3(), -b.ToUnityVector3(), Color.green, 60f);
+        DebugExtension.DebugArrow(Vector3.zero, c.ToUnityVector3(), Color.white, 60f);
+        
+        Debug.Log("Magnitude of a = " + a.Magnitude().ToString("F2")); // Your code here.ToString("F2"));
+        Debug.Log("Magnitude of b = " + b.Magnitude().ToString("F2")); // Your code here.ToString("F2"));
+        Debug.Log("Magnitude of c = " + c.Magnitude().ToString("F2")); // Your code here.ToString("F2"));
     }
 
     public void Question3b()
     {
-        // Your code here
-        // ...
-
-        //DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
-        // Your code here
+        // More vectors yay
+        HVector2D a = new HVector2D(3, 5);
+        HVector2D b = a / 2;
+        
+        DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
+        DebugExtension.DebugArrow(Vector3.right, b.ToUnityVector3(), Color.green, 60f);
+        
     }
 
-    public void Question3c() { }
+    public void Question3c()
+    { 
+        HVector2D a = new HVector2D(3, 5);
+        HVector2D a_normalised = new HVector2D(3, 5);
+        a_normalised.Normalize();
+        Debug.Log("Magnitude of a = " + a.Magnitude().ToString("F2")); // Your code here.ToString("F2"));
+        Debug.Log("Magnitude of a_norm = " + a_normalised.Magnitude().ToString("F2")); // Your code here.ToString("F2"));
+        DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
+        DebugExtension.DebugArrow(Vector3.right, a_normalised.ToUnityVector3(), Color.green, 60f);
+    }
 
     public void Projection()
     {
-        HVector2D a = new HVector2D(0, 0);
+
         HVector2D b = new HVector2D(6, 0);
         HVector2D c = new HVector2D(2, 2);
 
-        //HVector2D v1 = b - a;
-        // Your code here
+        // HVector2D v1 = b - a;
 
-        //HVector2D proj = // Your code here
-
-        //DebugExtension.DebugArrow(a.ToUnityVector3(), b.ToUnityVector3(), Color.red, 60f);
-        //DebugExtension.DebugArrow(a.ToUnityVector3(), c.ToUnityVector3(), Color.yellow, 60f);
-        //DebugExtension.DebugArrow(a.ToUnityVector3(), proj.ToUnityVector3(), Color.white, 60f);
+        HVector2D proj = c.Projection(b);
+        Debug.Log("Magnitude of proj = " + proj.Magnitude().ToString("F2")); // Your code here.ToString("F2"));
+        DebugExtension.DebugArrow(Vector3.zero, b.ToUnityVector3(), Color.red, 60f);
+        DebugExtension.DebugArrow(Vector3.zero, c.ToUnityVector3(), Color.yellow, 60f);
+        // DebugExtension.DebugArrow(Vector3.zero, v1.ToUnityVector3(), Color.yellow, 60f);
+        DebugExtension.DebugArrow(Vector3.zero, proj.ToUnityVector3(), Color.white, 60f);
     }
 }
