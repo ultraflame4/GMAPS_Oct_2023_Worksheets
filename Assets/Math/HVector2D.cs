@@ -87,8 +87,11 @@ public class        HVector2D
     {
         float d1 = DotProduct(other);
         float angle = Mathf.Acos(d1 / (Magnitude() * other.Magnitude())); // Use the other dot product formula to find the angle between the vectors
-        float left = other.x * y - x * other.y; // Weird equation i found only to check if vector is left or right of the other one. Left = -1, Right = 1
-        float signed = angle * Mathf.Sign(left); // Add sign to angle
+        // Get perp vector to other vector. If this vector is to the right of the other vector, this vector will be either in front or behind of the perp,
+        // Which will give us a either positive or negative value.
+        HVector2D perp = new HVector2D(other.x, -other.y);
+        float d2 = DotProduct(perp);
+        float signed = angle * Mathf.Sign(d2); // Add sign to angle
         return signed;
     }
 
