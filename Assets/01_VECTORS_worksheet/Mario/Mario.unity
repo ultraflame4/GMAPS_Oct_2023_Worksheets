@@ -557,7 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planet: {fileID: 25543976}
   force: 10
-  gravityStrength: 4
+  gravityStrength: 20
 --- !u!1001 &2142997463
 PrefabInstance:
   m_ObjectHideFlags: 0
