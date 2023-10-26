@@ -26,7 +26,7 @@ public class MarioHVector2D : MonoBehaviour
         moveDir.Normalize();
 
         rb.AddForce((moveDir * force * Input.GetAxisRaw("Vertical")).ToUnityVector3());
-        rb.AddForce((gravityDir * gravityStrength).ToUnityVector3());
+        rb.AddForce((gravityNorm * gravityStrength).ToUnityVector3());
 
         HVector2D down = new HVector2D(0, -1);
 
