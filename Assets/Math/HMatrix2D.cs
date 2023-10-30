@@ -47,10 +47,17 @@ public class HMatrix2D
     //
     // // Note that the second argument is a HVector2D object
     // //
-    // public static HVector2D operator *(HMatrix2D left, HVector2D right)
-    // {
-    //     return // your code here
-    // }
+    public static HVector2D operator *(HMatrix2D left, HVector2D right)
+    {
+        return new HVector2D(
+            left.Entries[0, 0] * right.x +
+            left.Entries[0, 1] * right.x +
+            left.Entries[0, 2] * right.x,
+            left.Entries[1, 0] * right.y +
+            left.Entries[1, 1] * right.y +
+            left.Entries[1, 2] * right.y
+        );
+    }
 
     // Note that the second argument is a HMatrix2D object
     //
@@ -125,8 +132,8 @@ public class HMatrix2D
     public void SetIdentity()
     {
         for (int y = 0; y < Entries.GetLength(0); y++)
-            for (int x = 0; x < Entries.GetLength(1); x++)
-                Entries[y, x] = (y == x) ? 1 : 0;
+        for (int x = 0; x < Entries.GetLength(1); x++)
+            Entries[y, x] = (y == x) ? 1 : 0;
     }
 
     public void SetTranslationMat(float transX, float transY)
