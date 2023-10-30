@@ -21,8 +21,11 @@ public class HMatrix2D
         float m20, float m21, float m22)
     {
         Entries = new[,] {
+                // First row
                 { m00, m01, m02 },
+                // Second row
                 { m10, m11, m12 },
+                // Third row
                 { m20, m21, m22 }
         };
     }
@@ -119,22 +122,27 @@ public class HMatrix2D
         return // your code here
     }
 
-    public void setIdentity()
+    public void SetIdentity()
+    {
+        Entries = new[,] {
+                { 1f, 0f, 0f },
+                { 0f, 1f, 0f },
+                { 0f, 0f, 1f }
+        };
+        
+    }
+
+    public void SetTranslationMat(float transX, float transY)
     {
         // your code here
     }
 
-    public void setTranslationMat(float transX, float transY)
+    public void SetRotationMat(float rotDeg)
     {
         // your code here
     }
 
-    public void setRotationMat(float rotDeg)
-    {
-        // your code here
-    }
-
-    public void setScalingMat(float scaleX, float scaleY)
+    public void SetScalingMat(float scaleX, float scaleY)
     {
         // your code here
     }
