@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HMatrix2D 
+public class HMatrix2D
 {
     public float[,] Entries { get; set; } = new float[3, 3];
 
@@ -17,17 +17,14 @@ public class HMatrix2D
     }
 
     public HMatrix2D(float m00, float m01, float m02,
-             float m10, float m11, float m12,
-             float m20, float m21, float m22)
+        float m10, float m11, float m12,
+        float m20, float m21, float m22)
     {
-	// First row
-        // your code here
-
-        // Second row
-        // your code here
-
-        // Third row
-        // your code here
+        Entries = new[,] {
+                { m00, m01, m02 },
+                { m10, m11, m12 },
+                { m20, m21, m22 }
+        };
     }
 
     public static HMatrix2D operator +(HMatrix2D left, HMatrix2D right)
@@ -59,41 +56,35 @@ public class HMatrix2D
         return new HMatrix2D(
             // First row --------------------------------------------------------
             left.Entries[0, 0] * right.Entries[0, 0] +
-            left.Entries[0, 1] * right.Entries[1, 0] + 
+            left.Entries[0, 1] * right.Entries[1, 0] +
             left.Entries[0, 2] * right.Entries[2, 0],
-            
-            left.Entries[0, 0] * right.Entries[0, 1] + 
-            left.Entries[0, 1] * right.Entries[1, 1] + 
+            left.Entries[0, 0] * right.Entries[0, 1] +
+            left.Entries[0, 1] * right.Entries[1, 1] +
             left.Entries[0, 2] * right.Entries[2, 1],
-            
-            left.Entries[0, 0] * right.Entries[0, 2] + 
-            left.Entries[0, 1] * right.Entries[1, 2] + 
+            left.Entries[0, 0] * right.Entries[0, 2] +
+            left.Entries[0, 1] * right.Entries[1, 2] +
             left.Entries[0, 2] * right.Entries[2, 2],
-        
+
             // Second row --------------------------------------------------------
             left.Entries[1, 0] * right.Entries[0, 0] +
-            left.Entries[1, 1] * right.Entries[1, 0] + 
+            left.Entries[1, 1] * right.Entries[1, 0] +
             left.Entries[1, 2] * right.Entries[2, 0],
-            
-            left.Entries[1, 0] * right.Entries[0, 1] + 
-            left.Entries[1, 1] * right.Entries[1, 1] + 
+            left.Entries[1, 0] * right.Entries[0, 1] +
+            left.Entries[1, 1] * right.Entries[1, 1] +
             left.Entries[1, 2] * right.Entries[2, 1],
-            
-            left.Entries[1, 0] * right.Entries[0, 2] + 
-            left.Entries[1, 1] * right.Entries[1, 2] + 
+            left.Entries[1, 0] * right.Entries[0, 2] +
+            left.Entries[1, 1] * right.Entries[1, 2] +
             left.Entries[1, 2] * right.Entries[2, 2],
 
             // third row row --------------------------------------------------------
             left.Entries[2, 0] * right.Entries[0, 0] +
-            left.Entries[2, 1] * right.Entries[1, 0] + 
+            left.Entries[2, 1] * right.Entries[1, 0] +
             left.Entries[2, 2] * right.Entries[2, 0],
-            
-            left.Entries[2, 0] * right.Entries[0, 1] + 
-            left.Entries[2, 1] * right.Entries[1, 1] + 
+            left.Entries[2, 0] * right.Entries[0, 1] +
+            left.Entries[2, 1] * right.Entries[1, 1] +
             left.Entries[2, 2] * right.Entries[2, 1],
-            
-            left.Entries[2, 0] * right.Entries[0, 2] + 
-            left.Entries[2, 1] * right.Entries[1, 2] + 
+            left.Entries[2, 0] * right.Entries[0, 2] +
+            left.Entries[2, 1] * right.Entries[1, 2] +
             left.Entries[2, 2] * right.Entries[2, 2]
         );
     }
@@ -157,8 +148,10 @@ public class HMatrix2D
             {
                 result += Entries[r, c] + "  ";
             }
+
             result += "\n";
         }
+
         Debug.Log(result);
     }
 }
