@@ -113,15 +113,22 @@ public class HMatrix2D
         );
     }
 
-    // public static bool operator ==(HMatrix2D left, HMatrix2D right)
-    // {
-    //     
-    // }
+    public static bool operator ==(HMatrix2D left, HMatrix2D right)
+    {
 
-    // public static bool operator !=(HMatrix2D left, HMatrix2D right)
-    // {
-    //     // your code here
-    // }
+        for (int y = 0; y < left.Entries.GetLength(0); y++)
+        for (int x = 0; x < left.Entries.GetLength(1); x++)
+            // If there is one entry that isn't the same immediate return false (no need to continue checking)
+            if (left.Entries[y, x] == right.Entries[y, x])
+                return false;
+
+        return true;
+    }
+
+    public static bool operator !=(HMatrix2D left, HMatrix2D right)
+    {
+        return !(left == right); // Simply invert the == operation
+    }
     //
     // public override bool Equals(object obj)
     // {
