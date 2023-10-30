@@ -30,27 +30,27 @@ public class HMatrix2D
         };
     }
 
-    public static HMatrix2D operator +(HMatrix2D left, HMatrix2D right)
-    {
-        return // your code here
-    }
-
-    public static HMatrix2D operator -(HMatrix2D left, HMatrix2D right)
-    {
-        return // your code here
-    }
-
-    public static HMatrix2D operator *(HMatrix2D left, float scalar)
-    {
-        return // your code here
-    }
-
-    // Note that the second argument is a HVector2D object
+    // public static HMatrix2D operator +(HMatrix2D left, HMatrix2D right)
+    // {
+    //     return // your code here
+    // }
     //
-    public static HVector2D operator *(HMatrix2D left, HVector2D right)
-    {
-        return // your code here
-    }
+    // public static HMatrix2D operator -(HMatrix2D left, HMatrix2D right)
+    // {
+    //     return // your code here
+    // }
+    //
+    // public static HMatrix2D operator *(HMatrix2D left, float scalar)
+    // {
+    //     return // your code here
+    // }
+    //
+    // // Note that the second argument is a HVector2D object
+    // //
+    // public static HVector2D operator *(HMatrix2D left, HVector2D right)
+    // {
+    //     return // your code here
+    // }
 
     // Note that the second argument is a HMatrix2D object
     //
@@ -92,35 +92,35 @@ public class HMatrix2D
         );
     }
 
-    public static bool operator ==(HMatrix2D left, HMatrix2D right)
-    {
-        // your code here
-    }
+    // public static bool operator ==(HMatrix2D left, HMatrix2D right)
+    // {
+    //     // your code here
+    // }
+    //
+    // public static bool operator !=(HMatrix2D left, HMatrix2D right)
+    // {
+    //     // your code here
+    // }
+    //
+    // public override bool Equals(object obj)
+    // {
+    //     // your code here
+    // }
 
-    public static bool operator !=(HMatrix2D left, HMatrix2D right)
-    {
-        // your code here
-    }
-
-    public override bool Equals(object obj)
-    {
-        // your code here
-    }
-
-    public override int GetHashCode()
-    {
-        // your code here
-    }
-
-    public HMatrix2D transpose()
-    {
-        return // your code here
-    }
-
-    public float getDeterminant()
-    {
-        return // your code here
-    }
+    // public override int GetHashCode()
+    // {
+    //     // your code here
+    // }
+    //
+    // public HMatrix2D transpose()
+    // {
+    //     return // your code here
+    // }
+    //
+    // public float getDeterminant()
+    // {
+    //     return // your code here
+    // }
 
     public void SetIdentity()
     {
