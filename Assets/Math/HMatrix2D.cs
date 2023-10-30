@@ -155,7 +155,7 @@ public class HMatrix2D
         {
             for (int c = 0; c < 3; c++)
             {
-                result += Entries[r, c] + "  ";
+                result += Entries[r, c] + "  "; 
             }
 
             result += "\n";
