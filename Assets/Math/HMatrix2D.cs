@@ -32,21 +32,36 @@ public class HMatrix2D
         };
     }
 
-    // public static HMatrix2D operator +(HMatrix2D left, HMatrix2D right)
-    // {
-    //     return // your code here
-    // }
+    public static HMatrix2D operator +(HMatrix2D left, HMatrix2D right)
+    {
+        var copy = new HMatrix2D(left.Entries);
+        for (int y = 0; y < copy.Entries.GetLength(0); y++)
+        for (int x = 0; x < copy.Entries.GetLength(1); x++)
+            copy.Entries[y, x] += right.Entries[y, x];
+        return copy;
+    }
+
+    public static HMatrix2D operator -(HMatrix2D left, HMatrix2D right)
+    {
+        var copy = new HMatrix2D(left.Entries);
+        for (int y = 0; y < copy.Entries.GetLength(0); y++)
+        for (int x = 0; x < copy.Entries.GetLength(1); x++)
+            copy.Entries[y, x] -= right.Entries[y, x];
+        return copy;
+    }
+
     //
-    // public static HMatrix2D operator -(HMatrix2D left, HMatrix2D right)
-    // {
-    //     return // your code here
-    // }
-    //
-    // public static HMatrix2D operator *(HMatrix2D left, float scalar)
-    // {
-    //     return // your code here
-    // }
-    //
+    public static HMatrix2D operator *(HMatrix2D left, float scalar)
+    {
+        var copy = new HMatrix2D(left.Entries);
+        for (int y = 0; y < copy.Entries.GetLength(0); y++)
+        for (int x = 0; x < copy.Entries.GetLength(1); x++)
+            copy.Entries[y, x] *= scalar;
+
+
+        return copy;
+    }
+
     // // Note that the second argument is a HVector2D object
     // //
     public static HVector2D operator *(HMatrix2D left, HVector2D right)
@@ -102,7 +117,7 @@ public class HMatrix2D
     // {
     //     
     // }
-    
+
     // public static bool operator !=(HMatrix2D left, HMatrix2D right)
     // {
     //     // your code here
