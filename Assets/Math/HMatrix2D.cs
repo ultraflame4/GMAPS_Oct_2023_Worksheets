@@ -125,12 +125,8 @@ public class HMatrix2D
     public void SetIdentity()
     {
         for (int y = 0; y < Entries.GetLength(0); y++)
-        {
             for (int x = 0; x < Entries.GetLength(1); x++)
-            {
                 Entries[y, x] = (y == x) ? 1 : 0;
-            }
-        }
     }
 
     public void SetTranslationMat(float transX, float transY)
@@ -155,7 +151,7 @@ public class HMatrix2D
         {
             for (int c = 0; c < 3; c++)
             {
-                result += Entries[r, c] + "  "; 
+                result += Entries[r, c] + "  ";
             }
 
             result += "\n";
