@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class HMatrix2D
 
     public HMatrix2D(float[,] multiArray)
     {
+        Array.Copy(multiArray, Entries, multiArray.Length);
         // your code here
     }
 
@@ -98,9 +100,9 @@ public class HMatrix2D
 
     // public static bool operator ==(HMatrix2D left, HMatrix2D right)
     // {
-    //     // your code here
+    //     
     // }
-    //
+    
     // public static bool operator !=(HMatrix2D left, HMatrix2D right)
     // {
     //     // your code here
