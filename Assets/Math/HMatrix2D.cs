@@ -179,7 +179,11 @@ public class HMatrix2D
 
     public void SetScalingMat(float scaleX, float scaleY)
     {
-        // your code here
+        Entries = new float[,] {
+                { scaleX, 0, 0 },
+                { 0, scaleY, 0 },
+                { 0, 0, 1 }
+        };
     }
 
     public void Print()
