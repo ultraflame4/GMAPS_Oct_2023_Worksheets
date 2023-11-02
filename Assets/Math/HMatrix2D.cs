@@ -129,21 +129,26 @@ public class HMatrix2D
     {
         return !(left == right); // Simply invert the == operation
     }
-    //
-    // public override bool Equals(object obj)
-    // {
-    //     // your code here
-    // }
+    
+    public override bool Equals(object obj)
+    {
+        if (obj.GetType() == typeof(HMatrix2D)) return (HMatrix2D)obj == this;
+        return false;
+    }
 
     // public override int GetHashCode()
     // {
-    //     // your code here
+    //     return Entries.GetHashCode();
     // }
-    //
-    // public HMatrix2D transpose()
-    // {
-    //     return // your code here
-    // }
+    // //
+    public HMatrix2D transpose()
+    {
+        return new HMatrix2D(
+            Entries[0, 0], Entries[1, 0], Entries[2, 0],
+            Entries[0, 1], Entries[1, 1], Entries[2, 1],
+            Entries[0, 2], Entries[1, 2], Entries[2, 2]
+        );
+    }
     //
     // public float getDeterminant()
     // {
