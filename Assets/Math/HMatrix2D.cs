@@ -115,10 +115,9 @@ public class HMatrix2D
 
     public static bool operator ==(HMatrix2D left, HMatrix2D right)
     {
-
         for (int y = 0; y < left.Entries.GetLength(0); y++)
         for (int x = 0; x < left.Entries.GetLength(1); x++)
-            // If there is one entry that isn't the same immediate return false (no need to continue checking)
+                // If there is one entry that isn't the same immediate return false (no need to continue checking)
             if (left.Entries[y, x] != right.Entries[y, x])
                 return false;
 
@@ -129,7 +128,7 @@ public class HMatrix2D
     {
         return !(left == right); // Simply invert the == operation
     }
-    
+
     public override bool Equals(object obj)
     {
         if (obj.GetType() == typeof(HMatrix2D)) return (HMatrix2D)obj == this;
@@ -169,7 +168,13 @@ public class HMatrix2D
 
     public void SetRotationMat(float rotDeg)
     {
-        // your code here
+        // Rotation matrix for rotating around the z axis 
+        Entries = new float[,] {
+                { Mathf.Cos(rotDeg), -Mathf.Sin(rotDeg), 0 },
+                { Mathf.Sin(rotDeg), Mathf.Cos(rotDeg), 0 },
+                {0,0,1}
+        };
+        
     }
 
     public void SetScalingMat(float scaleX, float scaleY)
