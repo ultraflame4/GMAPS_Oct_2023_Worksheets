@@ -67,10 +67,8 @@ public class HMatrix2D
     public static HVector2D operator *(HMatrix2D left, HVector2D right)
     {
         return new HVector2D(
-            left.Entries[0, 0] * right.x +
-            left.Entries[0, 1] * right.y,
-            left.Entries[1, 0] * right.x +
-            left.Entries[1, 1] * right.y);
+            left.Entries[0, 0] * right.x + left.Entries[0, 1] * right.y + left.Entries[0, 2] * right.h,
+            left.Entries[1, 0] * right.x + left.Entries[1, 1] * right.y + left.Entries[1, 2] * right.h);
     }
 
     // Note that the second argument is a HMatrix2D object
