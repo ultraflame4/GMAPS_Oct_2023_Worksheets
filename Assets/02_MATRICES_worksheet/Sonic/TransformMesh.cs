@@ -1,5 +1,6 @@
 ﻿// Uncomment this whole file.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,12 +18,14 @@ public class TransformMesh : MonoBehaviour
     private MeshManager meshManager;
     HVector2D pos = new HVector2D();
 
+    private float rotate_angle = 0f;
     void Start()
     {
         meshManager = GetComponent<MeshManager>();
         pos = new HVector2D(gameObject.transform.position.x, gameObject.transform.position.y);
         
         Translate(3,3);
+        Rotate( rotate_angle * Mathf.Deg2Rad);
         // Your code here
     }
 
@@ -37,10 +40,16 @@ public class TransformMesh : MonoBehaviour
 
     void Rotate(float angle)
     {
+        toOriginMatrix.SetIdentity();
+        toOriginMatrix.SetTranslationMat(-pos.x, -pos.y);
+        fromOriginMatrix.SetIdentity();
+        fromOriginMatrix.SetTranslationMat(pos.x, pos.y);
         
         rotateMatrix = new HMatrix2D();
         rotateMatrix.SetRotationMat(angle);
-        transformMatrix *= rotateMatrix;
+        
+        transformMatrix.SetIdentity();
+        transformMatrix = fromOriginMatrix * rotateMatrix * toOriginMatrix;
     
         Transform();
     }
@@ -55,9 +64,16 @@ public class TransformMesh : MonoBehaviour
             vert = transformMatrix * vert;
             vertices[i].x = vert.x;
             vertices[i].y = vert.y;
-            Debug.Log(vertices[i]);
+            // Debug.Log(vertices[i]);
         }
 
         meshManager.clonedMesh.vertices = vertices;
+    }
+
+    private void Update()
+    {
+        rotate_angle+= 0.01f * Time.deltaTime;
+        if (rotate_angle > 360) rotate_angle = 0;
+        Rotate( rotate_angle * Mathf.Deg2Rad);
     }
 }
