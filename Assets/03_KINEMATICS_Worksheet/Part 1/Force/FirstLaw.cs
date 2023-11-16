@@ -9,10 +9,9 @@ public class FirstLaw : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        
-        rb.AddForce(Vector3.up * 100f);
-        rb.AddForce(Vector3.right * 300f);
+        rb = GetComponent<Rigidbody>(); 
+        // rb.AddForce(Vector3.up * 100f);
+        rb.AddForce(Vector3.right * 100f,ForceMode.VelocityChange);
     }
 
     void FixedUpdate()
