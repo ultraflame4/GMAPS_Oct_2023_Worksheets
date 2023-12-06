@@ -49,8 +49,7 @@ public class HMatrix2D
             copy.Entries[y, x] -= right.Entries[y, x];
         return copy;
     }
-
-    //
+    
     public static HMatrix2D operator *(HMatrix2D left, float scalar)
     {
         var copy = new HMatrix2D(left.Entries);
@@ -62,8 +61,8 @@ public class HMatrix2D
         return copy;
     }
 
-    // // Note that the second argument is a HVector2D object
-    // //
+    // Note that the second argument is a HVector2D object
+    //
     public static HVector2D operator *(HMatrix2D left, HVector2D right)
     {
         return new HVector2D(
