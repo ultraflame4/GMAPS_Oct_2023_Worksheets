@@ -24,12 +24,16 @@ public class Ball2D : MonoBehaviour
 
     public bool IsCollidingWith(float x, float y)
     {
+        // If distance between the ball center the point is less than the radius,
+        // then the ball is colliding with the point
         float distance = Util.FindDistance(Position, new HVector2D(x,y));
         return distance <= Radius;
     }
 
     public bool IsCollidingWith(Ball2D other)
     {
+        // If distance between the ball center the point is less than the combined radius,
+        // ball is colliding with the other ball
         float distance = Util.FindDistance(Position, other.Position);
         return distance <= Radius + other.Radius;
     }
@@ -41,12 +45,15 @@ public class Ball2D : MonoBehaviour
 
     private void UpdateBall2DPhysics(float deltaTime)
     {
+        // Calculate the displacement overtime (for this frame)
         float displacementX = Velocity.x * deltaTime;
         float displacementY = Velocity.y * deltaTime;
 
+        // Add the displacement to the position
         Position.x += displacementX;
         Position.y += displacementY;
-
+        
+        // Update the transform position of the ball
         transform.position = new Vector2(Position.x,Position.y);
     }
 }

@@ -21,29 +21,36 @@ public class PoolCue : MonoBehaviour
 		
 		if (Input.GetMouseButtonDown(0))
 		{
-			var startLinePos = mousePos; // Start line drawing
+			// start position of the line
+			var startLinePos = mousePos;
 			Debug.Log($" Mouse XY {mousePos}, Ball xy {ball.transform.position}");
+			// If the position is in the ball, start drawing the line
 			if (ball != null && ball.IsCollidingWith(startLinePos.x,startLinePos.y))
 			{
 				Debug.Log(" IN BALL!");
+				// Get line from line factory and assign it to drawLine
 				drawnLine = lineFactory.GetLine(ball.Position.ToUnityVector2(),startLinePos,10,Color.gray);
 				drawnLine.EnableDrawing(true);
 			}
 		}
-		
+		// If the mouse button is released, and there is a line being drawn
 		else if (Input.GetMouseButtonUp(0) && drawnLine != null)
 		{
+			// Disable line drawing
 			drawnLine.EnableDrawing(false);
 			
-			//update the velocity of the white ball.
+			// Calculate the velocity of the white ball
 			HVector2D v = ball.Position - new HVector2D(mousePos.x,mousePos.y);
+			// Update the velocity of the white ball.
 			ball.Velocity = v;
-		
-			drawnLine = null; // End line drawing            
+			// End line drawing by setting drawnLine to null
+			drawnLine = null;             
 		}
 
+		// If there is a line that is being drawn
 		if (drawnLine != null)
 		{
+			// Update the end position of the line to be where the mouse is.
 			drawnLine.end = mousePos; // Update line end
 		}
 	}
