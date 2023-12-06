@@ -153,6 +153,8 @@ public class HMatrix2D
 
     public void SetIdentity()
     {
+        // Iterate through the 2d array, where y is the row and x is the column
+        // Where x==y set the entry to 1, otherwise set it to 0
         for (int y = 0; y < Entries.GetLength(0); y++)
         for (int x = 0; x < Entries.GetLength(1); x++)
             Entries[y, x] = (y == x) ? 1 : 0;
@@ -180,6 +182,7 @@ public class HMatrix2D
 
     public void SetScalingMat(float scaleX, float scaleY)
     {
+        // Use the very nice array initialisation syntax to set the matrix entries
         Entries = new float[,] {
                 { scaleX, 0, 0 },
                 { 0, scaleY, 0 },
