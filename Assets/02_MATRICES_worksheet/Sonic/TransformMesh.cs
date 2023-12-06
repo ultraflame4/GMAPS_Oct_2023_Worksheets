@@ -26,7 +26,6 @@ public class TransformMesh : MonoBehaviour
         
         Translate(3,3);
         Rotate( rotate_angle * Mathf.Deg2Rad);
-        // Your code here
     }
 
     
@@ -42,13 +41,17 @@ public class TransformMesh : MonoBehaviour
     {
         // don't really need to set identity because set translation mat will overwrite (and set the identity) anyways
         toOriginMatrix.SetIdentity(); 
+        // vector to origin is basically negative of position (because the position is the vector from origin to the object)
         toOriginMatrix.SetTranslationMat(-pos.x, -pos.y);
         fromOriginMatrix.SetIdentity();
+        // vector from origin is the position
         fromOriginMatrix.SetTranslationMat(pos.x, pos.y);
         
+        // Create a rotation matrix
         rotateMatrix = new HMatrix2D();
         rotateMatrix.SetRotationMat(angle);
         
+        // Combine the matrices
         transformMatrix.SetIdentity();
         transformMatrix = fromOriginMatrix * rotateMatrix * toOriginMatrix;
     
@@ -57,8 +60,10 @@ public class TransformMesh : MonoBehaviour
 
     private void Transform()
     {
+        // Copy the vertices array from the original mesh
         vertices = meshManager.clonedMesh.vertices;
 
+        // Transform each vertex
         for (int i = 0; i < vertices.Length; i++)
         {
             HVector2D vert = new HVector2D(vertices[i].x, vertices[i].y);
@@ -68,13 +73,17 @@ public class TransformMesh : MonoBehaviour
             // Debug.Log(vertices[i]);
         }
 
+        // Copy the transformed vertices back to the mesh
         meshManager.clonedMesh.vertices = vertices;
     }
 
     private void Update()
     {
+        // Rotate the mesh overtime
         rotate_angle+= 0.01f * Time.deltaTime;
+        // If the angle is greater than 360, reset it to 0
         if (rotate_angle > 360) rotate_angle = 0;
+        // Rotate the mesh using the angle.
         Rotate( rotate_angle * Mathf.Deg2Rad);
     }
 }
