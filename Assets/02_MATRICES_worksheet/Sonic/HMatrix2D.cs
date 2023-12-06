@@ -160,6 +160,7 @@ public class HMatrix2D
 
     public void SetTranslationMat(float transX, float transY)
     {
+        // Use the very nice array initialisation syntax to set the matrix entries
         Entries = new float[,] {
                 { 1, 0, transX },
                 { 0, 1, transY },
@@ -189,13 +190,14 @@ public class HMatrix2D
     public void Print()
     {
         string result = "";
+        // Iterate through the matrix entries and add them to the result string
         for (int r = 0; r < 3; r++)
         {
             for (int c = 0; c < 3; c++)
             {
                 result += Entries[r, c] + "  ";
             }
-
+            // End of row add newline
             result += "\n";
         }
 
