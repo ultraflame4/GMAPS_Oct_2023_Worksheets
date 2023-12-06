@@ -18,10 +18,15 @@ public class JumpToHeight : MonoBehaviour
         // u*u = v*v - 2as
         // u = sqrt(v*v - 2as)
         // v = 0, u = ?, a = Physics.gravity, s = Height
-
+        
+        // u is resulting velocity
         float u = Mathf.Sqrt(
-            rb.velocity.y*rb.velocity.y + 2 * 10 * Height
+            // velocity squared
+            rb.velocity.y*rb.velocity.y +
+            // 2 * acceleration * displacement
+            2 * 10 * Height
             );
+        // set the y velocity to the resulting velocity
         rb.velocity = new Vector3(rb.velocity.x,u);
 
         // float jumpForce = Mathf.Sqrt(-2 * Physics2D.gravity.y * Height);
