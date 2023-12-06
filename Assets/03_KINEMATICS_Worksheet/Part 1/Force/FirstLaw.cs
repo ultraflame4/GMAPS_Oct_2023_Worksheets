@@ -11,7 +11,7 @@ public class FirstLaw : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>(); 
         // rb.AddForce(Vector3.up * 100f);
-        rb.AddForce(Vector3.right * 100f,ForceMode.VelocityChange);
+        rb.AddForce(force,ForceMode.VelocityChange);
     }
 
     void FixedUpdate()

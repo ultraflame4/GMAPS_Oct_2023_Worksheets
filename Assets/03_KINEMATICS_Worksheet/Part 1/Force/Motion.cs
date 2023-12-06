@@ -9,7 +9,7 @@ public class Motion : MonoBehaviour
     void FixedUpdate()
     {
         float dt = Time.deltaTime;
-        Velocity.x = 100;
+        // Just multiply the vector3 by delta time no need to split it up in to dx, dy, dz when we are going to put it back together again
         Vector3 dVel = Velocity * dt;
         transform.Translate(dVel);
     }
