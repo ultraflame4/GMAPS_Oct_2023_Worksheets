@@ -91,6 +91,7 @@ public class        HVector2D
         // Which will give us a either positive or negative value.
         HVector2D perp = new HVector2D(other.x, -other.y);
         float d2 = DotProduct(perp);
+        // Use mathf.sign to get the sign of the value. 
         float signed = angle * Mathf.Sign(d2); // Add sign to angle
         return signed;
     }
@@ -105,6 +106,10 @@ public class        HVector2D
         return new Vector3(x, y, 0); // change this
     }
 
+    /// <summary>
+    /// Custom copy method to easily copy values from one vector to another
+    /// </summary>
+    /// <param name="v"></param>
     public void CopyTo(HVector2D v)
     {
         v.x = x;
