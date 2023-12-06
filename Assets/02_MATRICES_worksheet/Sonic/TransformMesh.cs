@@ -40,7 +40,8 @@ public class TransformMesh : MonoBehaviour
 
     void Rotate(float angle)
     {
-        toOriginMatrix.SetIdentity();
+        // don't really need to set identity because set translation mat will overwrite (and set the identity) anyways
+        toOriginMatrix.SetIdentity(); 
         toOriginMatrix.SetTranslationMat(-pos.x, -pos.y);
         fromOriginMatrix.SetIdentity();
         fromOriginMatrix.SetTranslationMat(pos.x, pos.y);
